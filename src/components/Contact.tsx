@@ -47,9 +47,9 @@ const links = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative bg-[#121212] py-28 px-6 md:px-20 text-white z-20 overflow-hidden">
+    <section id="contact" className="relative bg-transparent py-32 px-6 md:px-20 text-zinc-50 z-20 overflow-hidden">
       {/* Ambient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-zinc-900/30 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-3xl mx-auto relative text-center">
         <motion.div
@@ -58,13 +58,13 @@ export default function Contact() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <p className="text-sm uppercase tracking-[0.3em] text-blue-400 mb-4 font-medium">
+          <p className="text-xs uppercase tracking-widest text-zinc-500 mb-4 font-medium">
             Let&apos;s Connect
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-semibold mb-6 tracking-tight text-zinc-100">
             Get In Touch
           </h2>
-          <p className="text-gray-400 text-lg max-w-xl mx-auto mb-14 leading-relaxed">
+          <p className="text-zinc-400 text-lg max-w-xl mx-auto mb-14 leading-relaxed font-light">
             Seeking research internships and opportunities in AI/ML R&D. My inbox is always open — feel free to reach out.
           </p>
         </motion.div>
@@ -75,7 +75,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto mb-16"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-16"
         >
           {links.map((link, idx) => (
             <a
@@ -83,14 +83,14 @@ export default function Contact() {
               href={link.href}
               target={link.href.startsWith("http") ? "_blank" : undefined}
               rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 hover:bg-white/[0.08] hover:border-blue-500/30 transition-all duration-400"
+              className="group flex items-center gap-4 rounded-xl border border-zinc-800/60 bg-zinc-900/20 px-5 py-5 hover:bg-zinc-900/40 hover:border-zinc-700/50 transition-all duration-400 min-w-0"
             >
-              <span className="text-gray-400 group-hover:text-blue-400 transition-colors duration-300">
+              <span className="text-zinc-500 group-hover:text-zinc-100 transition-colors duration-300 shrink-0">
                 {link.icon}
               </span>
-              <div className="text-left">
-                <p className="text-xs text-gray-500 uppercase tracking-wider">{link.label}</p>
-                <p className="text-sm text-gray-300 group-hover:text-white transition-colors duration-300 truncate">{link.display}</p>
+              <div className="text-left min-w-0">
+                <p className="text-xs text-zinc-500 uppercase tracking-widest font-medium mb-0.5">{link.label}</p>
+                <p className="text-sm text-zinc-400 group-hover:text-zinc-100 transition-colors duration-300 truncate font-light">{link.display}</p>
               </div>
             </a>
           ))}
@@ -105,7 +105,7 @@ export default function Contact() {
         >
           <a
             href="mailto:tanmayrjn003@gmail.com"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-[#121212] font-semibold text-base hover:bg-gray-200 transition-colors duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-zinc-100 text-zinc-950 font-semibold text-base hover:bg-white hover:scale-105 transition-all duration-300"
           >
             Say Hello
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -116,13 +116,13 @@ export default function Contact() {
       </div>
 
       {/* Footer */}
-      <div className="max-w-5xl mx-auto mt-28 pt-8 border-t border-white/10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+      <div className="max-w-5xl mx-auto mt-28 pt-8 border-t border-zinc-800/60">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-500 font-light">
           <p>© 2026 Tanmay K Sahu. Designed and built from scratch.</p>
           <div className="flex items-center gap-6">
-            <a href="https://www.linkedin.com/in/tanmayksahu62/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">LinkedIn</a>
-            <a href="https://github.com/Tanmaykumar0162" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">GitHub</a>
-            <a href="mailto:tanmayrjn003@gmail.com" className="hover:text-white transition-colors duration-300">Email</a>
+            <a href="https://www.linkedin.com/in/tanmayksahu62/" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-200 transition-colors duration-300">LinkedIn</a>
+            <a href="https://github.com/Tanmaykumar0162" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-200 transition-colors duration-300">GitHub</a>
+            <a href="mailto:tanmayrjn003@gmail.com" className="hover:text-zinc-200 transition-colors duration-300">Email</a>
           </div>
         </div>
       </div>

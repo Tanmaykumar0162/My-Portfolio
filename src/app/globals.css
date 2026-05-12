@@ -1,16 +1,16 @@
+@import url('https://fonts.cdnfonts.com/css/azonix');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #121212;
-  --foreground: #ffffff;
+  --background: #0a0a0a;
+  --foreground: #fafafa;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  overflow-x: hidden;
 }
 
 @layer utilities {

@@ -42,16 +42,16 @@ const projects = [
 ];
 
 const accentMap: Record<string, { tag: string; dot: string; border: string; glow: string }> = {
-  blue: { tag: "text-blue-400", dot: "bg-blue-400", border: "group-hover:border-blue-500/30", glow: "from-blue-500/10" },
-  emerald: { tag: "text-emerald-400", dot: "bg-emerald-400", border: "group-hover:border-emerald-500/30", glow: "from-emerald-500/10" },
-  rose: { tag: "text-rose-400", dot: "bg-rose-400", border: "group-hover:border-rose-500/30", glow: "from-rose-500/10" },
+  blue: { tag: "text-zinc-300", dot: "bg-zinc-500", border: "group-hover:border-zinc-700/50", glow: "from-zinc-800/20" },
+  emerald: { tag: "text-zinc-300", dot: "bg-zinc-500", border: "group-hover:border-zinc-700/50", glow: "from-zinc-800/20" },
+  rose: { tag: "text-zinc-300", dot: "bg-zinc-500", border: "group-hover:border-zinc-700/50", glow: "from-zinc-800/20" },
 };
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative bg-[#0e0e0e] py-28 px-6 md:px-20 text-white z-20 overflow-hidden">
+    <section id="projects" className="relative bg-transparent py-32 px-6 md:px-20 text-zinc-50 z-20 overflow-hidden">
       {/* Ambient glow */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-zinc-900/30 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-5xl mx-auto relative">
         <motion.div
@@ -60,10 +60,10 @@ export default function Projects() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <p className="text-sm uppercase tracking-[0.3em] text-blue-400 mb-4 font-medium">
+          <p className="text-xs uppercase tracking-widest text-zinc-500 mb-4 font-medium">
             What I&apos;ve Built
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-16 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-semibold mb-16 tracking-tight text-zinc-100">
             Projects
           </h2>
         </motion.div>
@@ -78,7 +78,7 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
-                className={`group relative rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-8 md:p-10 hover:bg-white/[0.06] transition-all duration-500 overflow-hidden ${accent.border}`}
+                className={`group relative rounded-2xl border border-zinc-800/60 bg-zinc-900/20 backdrop-blur-sm p-8 md:p-10 hover:bg-zinc-900/40 transition-all duration-500 overflow-hidden ${accent.border}`}
               >
                 {/* Hover glow */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${accent.glow} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
@@ -87,12 +87,12 @@ export default function Projects() {
                   {/* Header */}
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-1">
                     <div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">
+                      <h3 className="text-2xl md:text-3xl font-semibold text-zinc-100 mb-1 tracking-tight">
                         {project.title}
                       </h3>
                       <p className={`text-sm font-medium ${accent.tag}`}>{project.subtitle}</p>
                     </div>
-                    <span className="text-sm text-gray-500 shrink-0 md:pt-2">{project.period}</span>
+                    <span className="text-sm text-zinc-500 shrink-0 md:pt-2 font-mono">{project.period}</span>
                   </div>
 
                   {/* Tech stack tags */}
@@ -100,7 +100,7 @@ export default function Projects() {
                     {project.techStack.map((tech, techIdx) => (
                       <span
                         key={techIdx}
-                        className="px-3 py-1 text-xs rounded-full border border-white/15 text-gray-400 bg-white/5"
+                        className="px-3 py-1.5 text-xs font-medium tracking-wide rounded-md border border-zinc-800/80 text-zinc-400 bg-zinc-900/50"
                       >
                         {tech}
                       </span>
@@ -110,8 +110,8 @@ export default function Projects() {
                   {/* Bullet points */}
                   <ul className="space-y-3">
                     {project.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-3 text-gray-300 text-[15px] leading-relaxed">
-                        <div className={`w-1.5 h-1.5 rounded-full ${accent.dot} mt-2 shrink-0`} />
+                      <li key={bIdx} className="flex items-start gap-4 text-zinc-400 text-[15px] leading-relaxed font-light">
+                        <div className={`w-1.5 h-1.5 rounded-full ${accent.dot} mt-2.5 shrink-0 opacity-50`} />
                         <span>{bullet}</span>
                       </li>
                     ))}

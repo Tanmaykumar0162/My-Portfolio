@@ -1,5 +1,4 @@
-import ScrollyCanvas from "@/components/ScrollyCanvas";
-import Overlay from "@/components/Overlay";
+import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import About from "@/components/About";
 import Education from "@/components/Education";
@@ -13,14 +12,7 @@ export default function Home() {
   return (
     <main className="bg-[#121212] min-h-screen">
       <Navbar />
-
-      {/* Scrollytelling hero */}
-      <div className="relative">
-        <ScrollyCanvas />
-        <Overlay />
-      </div>
-
-      {/* Content sections */}
+      <HeroSection />
       <About />
       <Education />
       <Skills />
