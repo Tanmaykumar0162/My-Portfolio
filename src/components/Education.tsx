@@ -1,80 +1,41 @@
-"use client";
+import Reveal from "./Reveal";
 
-import { motion } from "framer-motion";
-
-const education = [
-  {
-    institution: "Guru Ghasidas Vishwavidyalaya, Bilaspur",
-    degree: "Bachelor of Technology in Information Technology",
-    score: "CGPA: 7.81",
-    period: "Dec 2022 – May 2026",
-    location: "Bilaspur, Chhattisgarh",
-  },
-  {
-    institution: "J.L.M. Gayatri Vidya Peeth, Rajnandgaon",
-    degree: "CBSE Class 12th – PCM",
-    score: "88.6%",
-    period: "Jun 2021",
-    location: "Rajnandgaon, Chhattisgarh",
-  },
+const milestones = [
+  ["2019", "Hindustani Classical Sangeet Diploma, multiple Distinctions"],
+  ["2021", "Class 12 PCM, 88.6%, CBSE"],
+  ["2022", "Joined B.Tech IT at GGV"],
+  ["2025 Feb", "Joined UDAAN University Magazine as Graphic Designer"],
+  ["2025 Mar", "Cultural Coordinator, EQUILIBRIO Techfest (2,000+ attendees)"],
+  ["2025 Jul-Dec", "Built Emotion Recognition AI"],
+  ["2026 Jan-Apr", "Built Audio-to-MIDI Transcription system (flagship project)"],
+  ["2026 Mar", "GATE Qualified, DA and CS both"],
+  ["2026 Apr", "Built Enterprise Document Chatbot"],
 ];
 
 export default function Education() {
   return (
-    <section id="education" className="relative bg-transparent py-32 px-6 md:px-20 text-zinc-50 z-20 overflow-hidden">
-      {/* Ambient glow */}
-      <div className="absolute bottom-0 right-0 w-[800px] h-[500px] bg-zinc-900/30 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="max-w-5xl mx-auto relative">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
-          <p className="text-xs uppercase tracking-widest text-zinc-500 mb-4 font-medium">
-            Academic Background
-          </p>
-          <h2 className="text-4xl md:text-5xl font-semibold mb-16 tracking-tight text-zinc-100">
-            Education
+    <section id="journey" className="relative z-20 px-5 py-28 md:px-10 md:py-36">
+      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.82fr_1.18fr]">
+        <Reveal>
+          <p className="theme-eyebrow mb-5 text-sm font-semibold uppercase">Education & Journey</p>
+          <h2 className="theme-heading font-heading text-4xl font-semibold leading-tight md:text-6xl">
+            A timeline of sound, systems, and self-study.
           </h2>
-        </motion.div>
+        </Reveal>
 
         <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-zinc-700/60 via-zinc-700/20 to-transparent hidden md:block" />
-
-          <div className="space-y-12">
-            {education.map((edu, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: idx * 0.15, ease: "easeOut" }}
-                className="relative md:pl-12"
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-0 top-2 w-[23px] h-[23px] rounded-full border-2 border-zinc-700/60 bg-[#0a0a0a] hidden md:flex items-center justify-center">
-                  <div className="w-2.5 h-2.5 rounded-full bg-zinc-500" />
+          <div className="absolute bottom-4 left-3 top-4 w-px bg-gradient-to-b from-amber-300 via-indigo-400 to-transparent" />
+          <div className="space-y-7">
+            {milestones.map(([year, event], index) => (
+              <Reveal key={`${year}-${event}`} delay={index * 45} className="relative pl-11">
+                <span className="theme-surface absolute left-0 top-2 grid h-7 w-7 place-items-center ring-1 ring-amber-300/50">
+                  <span className="h-2.5 w-2.5 bg-amber-300" />
+                </span>
+                <div className="theme-surface p-5">
+                  <p className="theme-eyebrow font-heading text-lg font-semibold">{year}</p>
+                  <p className="theme-body mt-2 text-base leading-7">{event}</p>
                 </div>
-
-                <div className="rounded-2xl border border-zinc-800/60 bg-zinc-900/20 backdrop-blur-sm p-8 hover:bg-zinc-900/40 hover:border-zinc-700/50 transition-all duration-500">
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
-                    <h3 className="text-xl md:text-2xl font-semibold text-zinc-100 tracking-tight">
-                      {edu.institution}
-                    </h3>
-                    <span className="text-sm text-zinc-500 shrink-0 md:pt-1 font-mono">{edu.period}</span>
-                  </div>
-                  <p className="text-zinc-300 text-base mb-4 font-light">{edu.degree}</p>
-                  <div className="flex items-center gap-4">
-                    <span className="text-sm font-medium tracking-wide px-3 py-1.5 rounded-md bg-zinc-900/50 text-zinc-400 border border-zinc-800/80">
-                      {edu.score}
-                    </span>
-                    <span className="text-sm text-zinc-500">{edu.location}</span>
-                  </div>
-                </div>
-              </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>

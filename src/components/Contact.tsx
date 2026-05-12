@@ -1,129 +1,61 @@
-"use client";
-
-import { motion } from "framer-motion";
+import Reveal from "./Reveal";
 
 const links = [
-  {
-    label: "Email",
-    href: "mailto:tanmayrjn003@gmail.com",
-    display: "tanmayrjn003@gmail.com",
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-      </svg>
-    ),
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/tanmayksahu62/",
-    display: "linkedin.com/in/tanmayksahu62",
-    icon: (
-      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-      </svg>
-    ),
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/Tanmaykumar0162",
-    display: "github.com/Tanmaykumar0162",
-    icon: (
-      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-      </svg>
-    ),
-  },
-  {
-    label: "Phone",
-    href: "tel:+917693043174",
-    display: "+91-7693043174",
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-      </svg>
-    ),
-  },
+  { icon: "@", label: "Email", value: "tanmayrjn003@gmail.com", href: "mailto:tanmayrjn003@gmail.com" },
+  { icon: "in", label: "LinkedIn", value: "linkedin.com/in/tanmayksahu62", href: "https://www.linkedin.com/in/tanmayksahu62/" },
+  { icon: "GH", label: "GitHub", value: "github.com/Tanmaykumar0162", href: "https://github.com/Tanmaykumar0162" },
+  { icon: "tel", label: "Phone", value: "+91-7693043174", href: "tel:+917693043174" },
 ];
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative bg-transparent py-32 px-6 md:px-20 text-zinc-50 z-20 overflow-hidden">
-      {/* Ambient glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-zinc-900/30 rounded-full blur-[140px] pointer-events-none" />
-
-      <div className="max-w-3xl mx-auto relative text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
-          <p className="text-xs uppercase tracking-widest text-zinc-500 mb-4 font-medium">
-            Let&apos;s Connect
-          </p>
-          <h2 className="text-4xl md:text-5xl font-semibold mb-6 tracking-tight text-zinc-100">
-            Get In Touch
+    <section id="contact" className="relative z-20 px-5 py-28 md:px-10 md:py-36">
+      <div className="mx-auto max-w-7xl">
+        <Reveal className="max-w-4xl">
+          <p className="theme-eyebrow mb-5 text-sm font-semibold uppercase">Contact</p>
+          <h2 className="theme-heading font-heading text-5xl font-semibold leading-tight md:text-7xl">
+            Let&apos;s build something meaningful.
           </h2>
-          <p className="text-zinc-400 text-lg max-w-xl mx-auto mb-14 leading-relaxed font-light">
-            Seeking research internships and opportunities in AI/ML R&D. My inbox is always open — feel free to reach out.
+          <p className="theme-body mt-8 max-w-2xl text-lg leading-8">
+            Open to Data Science and ML roles, research internships, and AI/ML R&D opportunities.
           </p>
-        </motion.div>
+        </Reveal>
 
-        {/* Contact links */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-16"
-        >
-          {links.map((link, idx) => (
-            <a
-              key={idx}
-              href={link.href}
-              target={link.href.startsWith("http") ? "_blank" : undefined}
-              rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="group flex items-center gap-4 rounded-xl border border-zinc-800/60 bg-zinc-900/20 px-5 py-5 hover:bg-zinc-900/40 hover:border-zinc-700/50 transition-all duration-400 min-w-0"
-            >
-              <span className="text-zinc-500 group-hover:text-zinc-100 transition-colors duration-300 shrink-0">
-                {link.icon}
-              </span>
-              <div className="text-left min-w-0">
-                <p className="text-xs text-zinc-500 uppercase tracking-widest font-medium mb-0.5">{link.label}</p>
-                <p className="text-sm text-zinc-400 group-hover:text-zinc-100 transition-colors duration-300 truncate font-light">{link.display}</p>
-              </div>
-            </a>
+        <div className="theme-grid-frame mt-14 grid gap-px overflow-hidden md:grid-cols-2">
+          {links.map((link, index) => (
+            <Reveal key={link.label} delay={index * 60} className="theme-surface p-6">
+              <a
+                href={link.href}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="group flex items-center justify-between gap-5"
+              >
+                <span className="flex min-w-0 items-center gap-4">
+                  <span className="theme-pill grid h-11 w-11 shrink-0 place-items-center font-heading text-sm font-semibold">
+                    {link.icon}
+                  </span>
+                  <span className="min-w-0">
+                    <span className="theme-muted block text-xs font-semibold uppercase">{link.label}</span>
+                    <span className="theme-heading mt-2 block break-words text-base font-medium group-hover:text-[color:var(--accent-text)]">{link.value}</span>
+                  </span>
+                </span>
+                <span className="theme-eyebrow text-2xl">-&gt;</span>
+              </a>
+            </Reveal>
           ))}
-        </motion.div>
+        </div>
 
-        {/* CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-        >
+        <Reveal delay={180} className="mt-12">
           <a
             href="mailto:tanmayrjn003@gmail.com"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-zinc-100 text-zinc-950 font-semibold text-base hover:bg-white hover:scale-105 transition-all duration-300"
+            className="button-primary inline-flex px-8 py-4 font-heading text-lg font-semibold transition"
           >
-            Say Hello
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-            </svg>
+            Say Hello -&gt;
           </a>
-        </motion.div>
-      </div>
+        </Reveal>
 
-      {/* Footer */}
-      <div className="max-w-5xl mx-auto mt-28 pt-8 border-t border-zinc-800/60">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-500 font-light">
-          <p>© 2026 Tanmay K Sahu. Designed and built from scratch.</p>
-          <div className="flex items-center gap-6">
-            <a href="https://www.linkedin.com/in/tanmayksahu62/" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-200 transition-colors duration-300">LinkedIn</a>
-            <a href="https://github.com/Tanmaykumar0162" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-200 transition-colors duration-300">GitHub</a>
-            <a href="mailto:tanmayrjn003@gmail.com" className="hover:text-zinc-200 transition-colors duration-300">Email</a>
-          </div>
+        <div className="theme-muted mt-24 border-t border-[color:var(--line)] pt-8 text-sm">
+          <p>2026 Tanmay Kumar Sahu. Built with Next.js, exported for GitHub Pages.</p>
         </div>
       </div>
     </section>

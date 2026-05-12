@@ -10,27 +10,32 @@ const STORY_SECTIONS = [
   {
     title: "Tanmay Kumar Sahu",
     align: "left",
-    titleClassName: "text-3xl md:text-5xl font-medium uppercase tracking-[0.25em]",
+    subtitle: "AI / ML engineer in formation, trained in Hindustani classical vocals.",
+    titleClassName: "text-4xl sm:text-5xl md:text-6xl lg:text-[5.4rem]",
   },
   {
-    title: "Bridging AI and real-world scientific applications.",
+    title: "Tabla rhythms become spectrograms, then MIDI.",
+    subtitle: "A flagship audio ML system built from percussion, signal processing, and deep learning.",
     align: "right",
-    titleClassName: "text-4xl md:text-6xl",
+    titleClassName: "text-4xl md:text-[4.9rem]",
   },
   {
-    title: "Building LLM applications and end-to-end ML pipelines.",
+    title: "Documents become grounded answers.",
+    subtitle: "RAG pipelines, vector stores, and prompt-engineered systems for enterprise Q&A.",
     align: "left",
-    titleClassName: "text-4xl md:text-6xl",
+    titleClassName: "text-4xl md:text-[4.9rem]",
   },
   {
-    title: "Scaling robust RAG architectures for enterprise solutions.",
+    title: "Faces become real-time emotion signals.",
+    subtitle: "Computer vision experiments with deployed Streamlit interfaces.",
     align: "right",
-    titleClassName: "text-4xl md:text-6xl",
+    titleClassName: "text-4xl md:text-[4.9rem]",
   },
   {
-    title: "Scroll down to explore my projects and skills.",
+    title: "The story starts where disciplines collide.",
+    subtitle: "GATE qualified in DA and CS. Building AI systems with a musician's ear for patterns.",
     align: "left",
-    titleClassName: "text-4xl md:text-6xl",
+    titleClassName: "text-4xl md:text-[4.9rem]",
   },
 ] as const;
 
@@ -110,40 +115,62 @@ function StoryCard({ index, progress, section }: StoryCardProps) {
   return (
     <motion.div
       style={{ opacity, scale, filter }}
-      className={`absolute inset-0 flex flex-col justify-center px-6 md:px-20 ${alignmentClasses[section.align]}`}
+      className={`absolute inset-0 flex items-center px-6 md:px-20 ${alignmentClasses[section.align]} ${index === 0 ? "pointer-events-auto" : "pointer-events-none"}`}
     >
-      <div className={`w-full max-w-4xl ${cardPositionClasses[section.align]}`}>
-        {index === 0 && (
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-sm md:text-base uppercase tracking-widest text-zinc-400 font-medium mb-4 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]"
-          >
-            Meet
-          </motion.p>
-        )}
+      <div className={`w-full ${index === 0 ? "max-w-[46rem]" : "max-w-[42rem]"} ${cardPositionClasses[section.align]}`}>
         <TitleTag
-          className={`${section.titleClassName} font-bold tracking-tight text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.8)]`}
+          className={`${section.titleClassName} text-balance font-heading font-semibold leading-[0.92] tracking-[-0.045em] theme-heading drop-shadow-[0_4px_30px_rgba(0,0,0,0.34)]`}
         >
-          {index === 0 ? (
-            <span className="inline-block" style={{ fontFamily: "'Azonix', sans-serif" }}>
-              {section.title.split("").map((char, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  transition={{ duration: 0.4, delay: i * 0.06 + 0.3, ease: "easeOut" }}
-                  style={{ display: "inline-block" }}
-                >
-                  {char === " " ? "\u00A0" : char}
-                </motion.span>
-              ))}
-            </span>
-          ) : (
-            section.title
-          )}
+          {section.title}
         </TitleTag>
+
+        {index === 0 && (
+          <div className="absolute bottom-10 left-6 inline-flex flex-col gap-3 rounded-[28px] border border-[color:var(--line)] bg-[var(--surface)] p-2 shadow-[0_20px_80px_rgba(0,0,0,0.2)] backdrop-blur-xl sm:flex-row md:bottom-16 md:left-20">
+            <a
+              href="#projects"
+              className="button-primary group inline-flex min-w-[220px] items-center justify-between rounded-[20px] px-5 py-4 font-heading shadow-[0_16px_36px_rgba(0,0,0,0.12)] transition duration-300 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--accent-line)]"
+            >
+              <span className="text-lg font-semibold">View Projects</span>
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-black/10 transition-transform duration-300 group-hover:translate-x-1">
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+
+            <a
+              href="mailto:tanmayrjn003@gmail.com"
+              className="button-secondary group inline-flex min-w-[220px] items-center justify-between rounded-[20px] px-5 py-4 font-heading transition duration-300 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--line)]"
+            >
+              <span className="text-lg font-semibold">Contact</span>
+              <span className="theme-chip flex h-11 w-11 items-center justify-center rounded-full transition-transform duration-300 group-hover:translate-x-1">
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+          </div>
+        )}
       </div>
     </motion.div>
   );
@@ -259,15 +286,19 @@ export default function HeroSection() {
 
   return (
     <section
+      id="hero"
       ref={containerRef}
-      className="relative w-full bg-[#121212]"
+      className="relative w-full bg-[var(--background)]"
       style={{ height: `${STORY_SECTIONS.length * 120}vh` }}
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(0,0,0,0.05),_rgba(0,0,0,0.68)_68%)]" />
+        <div className="hero-scrim absolute inset-0" />
+        <div className="theme-muted absolute bottom-6 left-5 z-20 text-xs font-semibold uppercase md:left-10">
+          Scroll for stats
+        </div>
 
-        <div className="absolute inset-0 z-10 pointer-events-none">
+        <div className="absolute inset-0 z-10">
           {STORY_SECTIONS.map((section, index) => (
             <StoryCard
               key={section.title}

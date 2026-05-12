@@ -1,125 +1,105 @@
-"use client";
-
-import { motion } from "framer-motion";
+import Reveal from "./Reveal";
 
 const projects = [
   {
-    title: "Enterprise Document Intelligence Chatbot",
-    subtitle: "RAG Pipeline",
-    period: "Mar 2026 – Apr 2026",
-    techStack: ["LangChain", "ChromaDB", "Gemini API", "Streamlit", "Python"],
-    bullets: [
-      "Built a RAG pipeline using LangChain + ChromaDB vector store for semantic search over enterprise PDF knowledge bases.",
-      "Integrated Gemini API with prompt engineering templates for grounded, citation-backed LLM responses.",
-      "Deployed as a Streamlit app with document upload, chunk retrieval, and a conversational Q&A interface.",
+    title: "TablatoDraw / Audio-to-MIDI Transcription",
+    banner: "Audio ML",
+    gradient: "from-amber-300 via-orange-400 to-rose-500",
+    tagline: "Teaching machines to read Indian classical percussion.",
+    details: [
+      "CNN + BiLSTM pipeline classifying 6+ tabla stroke patterns from log-mel spectrograms with PCEN normalization.",
+      "Onset detection via Librosa for time-aligned MIDI generation.",
+      "Deployed as a FastAPI REST endpoint for real-time DAW integration.",
     ],
-    accentColor: "blue",
+    tags: ["PyTorch", "Librosa", "FastAPI", "Audio ML", "BiLSTM"],
+    primary: "GitHub ->",
+    secondary: "Case Study ->",
   },
   {
-    title: "Audio-to-MIDI Transcription",
-    subtitle: "Bridging Tabla & Digital DAWs",
-    period: "Jan 2026 – Apr 2026",
-    techStack: ["Audio ML", "PyTorch", "Librosa", "FastAPI"],
-    bullets: [
-      "Built a CNN + BiLSTM pipeline classifying 6+ Tabla stroke patterns into MIDI using Mel-spectrograms.",
-      "Developed onset detection via Librosa's beat tracking API for time-aligned MIDI generation from raw audio.",
-      "Deployed model as a REST API via FastAPI for real-time audio-to-MIDI inference in DAW workflows.",
+    title: "Enterprise Document Intelligence Chatbot",
+    banner: "RAG Systems",
+    gradient: "from-indigo-500 via-sky-500 to-cyan-300",
+    tagline: "RAG pipeline for grounded enterprise Q&A.",
+    details: [
+      "LangChain + ChromaDB vector store for semantic search over PDF knowledge bases.",
+      "Gemini API with prompt-engineered templates for citation-backed responses.",
+      "Streamlit interface with document upload and conversational Q&A.",
     ],
-    accentColor: "emerald",
+    tags: ["LangChain", "ChromaDB", "Gemini API", "Streamlit", "RAG"],
+    primary: "GitHub ->",
+    secondary: "Live Demo ->",
   },
   {
     title: "Emotion Recognition AI",
-    subtitle: "Computer Vision",
-    period: "Jul 2025 – Dec 2025",
-    techStack: ["TensorFlow", "Computer Vision", "Streamlit", "Python"],
-    bullets: [
-      "Trained a CNN with transfer learning on 35,000+ images with precision/recall analysis across 7 emotion classes.",
-      "Improved model robustness by 15% via real-time data augmentation and Dropout regularization.",
-      "Deployed as a Streamlit interface for real-time facial emotion classification from webcam or image input.",
+    banner: "Computer Vision",
+    gradient: "from-fuchsia-500 via-indigo-500 to-emerald-300",
+    tagline: "Real-time facial emotion classification at 7-class precision.",
+    details: [
+      "CNN with transfer learning trained on 35,000+ images.",
+      "15% robustness improvement via data augmentation and Dropout.",
+      "Live Streamlit interface for webcam and image input.",
     ],
-    accentColor: "rose",
+    tags: ["TensorFlow", "OpenCV", "Transfer Learning", "Streamlit"],
+    primary: "GitHub ->",
+    secondary: "Live Demo ->",
   },
 ];
 
-const accentMap: Record<string, { tag: string; dot: string; border: string; glow: string }> = {
-  blue: { tag: "text-zinc-300", dot: "bg-zinc-500", border: "group-hover:border-zinc-700/50", glow: "from-zinc-800/20" },
-  emerald: { tag: "text-zinc-300", dot: "bg-zinc-500", border: "group-hover:border-zinc-700/50", glow: "from-zinc-800/20" },
-  rose: { tag: "text-zinc-300", dot: "bg-zinc-500", border: "group-hover:border-zinc-700/50", glow: "from-zinc-800/20" },
-};
-
 export default function Projects() {
   return (
-    <section id="projects" className="relative bg-transparent py-32 px-6 md:px-20 text-zinc-50 z-20 overflow-hidden">
-      {/* Ambient glow */}
-      <div className="absolute top-0 right-0 w-[800px] h-[600px] bg-zinc-900/30 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="max-w-5xl mx-auto relative">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
-          <p className="text-xs uppercase tracking-widest text-zinc-500 mb-4 font-medium">
-            What I&apos;ve Built
-          </p>
-          <h2 className="text-4xl md:text-5xl font-semibold mb-16 tracking-tight text-zinc-100">
-            Projects
+    <section id="projects" className="relative z-20 px-5 py-28 md:px-10 md:py-36">
+      <div className="mx-auto max-w-7xl">
+        <Reveal className="max-w-3xl">
+          <p className="theme-eyebrow mb-5 text-sm font-semibold uppercase">Selected Work</p>
+          <h2 className="theme-heading font-heading text-4xl font-semibold leading-tight md:text-6xl">
+            Projects as systems, not just repositories.
           </h2>
-        </motion.div>
+        </Reveal>
 
-        <div className="space-y-10">
-          {projects.map((project, idx) => {
-            const accent = accentMap[project.accentColor];
-            return (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
-                className={`group relative rounded-2xl border border-zinc-800/60 bg-zinc-900/20 backdrop-blur-sm p-8 md:p-10 hover:bg-zinc-900/40 transition-all duration-500 overflow-hidden ${accent.border}`}
-              >
-                {/* Hover glow */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${accent.glow} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
+        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          {projects.map((project, index) => (
+            <Reveal
+              key={project.title}
+              delay={index * 90}
+              className="theme-surface group overflow-hidden transition duration-500 hover:-translate-y-1 hover:border-[color:var(--accent-line)]"
+            >
+              <div className={`bg-gradient-to-r ${project.gradient} px-6 py-4`}>
+                <p className="font-heading text-sm font-semibold uppercase text-zinc-950">{project.banner}</p>
+              </div>
+              <div className="flex min-h-[520px] flex-col p-6 md:p-7">
+                <h3 className="theme-heading font-heading text-2xl font-semibold leading-tight">{project.title}</h3>
+                <p className="theme-eyebrow mt-3 text-base font-medium">{project.tagline}</p>
 
-                <div className="relative z-10">
-                  {/* Header */}
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-1">
-                    <div>
-                      <h3 className="text-2xl md:text-3xl font-semibold text-zinc-100 mb-1 tracking-tight">
-                        {project.title}
-                      </h3>
-                      <p className={`text-sm font-medium ${accent.tag}`}>{project.subtitle}</p>
-                    </div>
-                    <span className="text-sm text-zinc-500 shrink-0 md:pt-2 font-mono">{project.period}</span>
-                  </div>
-
-                  {/* Tech stack tags */}
-                  <div className="flex flex-wrap gap-2 mt-4 mb-6">
-                    {project.techStack.map((tech, techIdx) => (
-                      <span
-                        key={techIdx}
-                        className="px-3 py-1.5 text-xs font-medium tracking-wide rounded-md border border-zinc-800/80 text-zinc-400 bg-zinc-900/50"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Bullet points */}
-                  <ul className="space-y-3">
-                    {project.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-4 text-zinc-400 text-[15px] leading-relaxed font-light">
-                        <div className={`w-1.5 h-1.5 rounded-full ${accent.dot} mt-2.5 shrink-0 opacity-50`} />
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="theme-body mt-7 space-y-4 text-sm leading-7 md:text-[15px]">
+                  {project.details.map((detail) => (
+                    <p key={detail}>{detail}</p>
+                  ))}
                 </div>
-              </motion.div>
-            );
-          })}
+
+                <div className="mt-7 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="theme-chip px-3 py-1.5 text-xs font-medium">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-auto flex flex-wrap gap-3 pt-8">
+                  <a
+                    className="button-secondary px-4 py-2 text-sm font-semibold transition"
+                    href="https://github.com/Tanmaykumar0162"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {project.primary}
+                  </a>
+                  <a className="button-primary px-4 py-2 text-sm font-semibold transition" href="#contact">
+                    {project.secondary}
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

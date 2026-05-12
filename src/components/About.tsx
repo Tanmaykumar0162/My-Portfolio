@@ -1,73 +1,45 @@
-"use client";
+import Reveal from "./Reveal";
 
-import { motion } from "framer-motion";
+const facts = [
+  ["Name", "Tanmay Kumar Sahu"],
+  ["Degree", "B.Tech in Information Technology"],
+  ["University", "Guru Ghasidas Vishwavidyalaya, Bilaspur"],
+  ["CGPA", "7.81"],
+  ["Focus", "AI / ML / Deep Learning / RAG"],
+  ["Location", "Bilaspur, Chhattisgarh, India"],
+];
 
 export default function About() {
   return (
-    <section id="about" className="relative bg-transparent py-32 px-6 md:px-20 text-zinc-50 z-20 overflow-hidden">
-      {/* Subtle ambient glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-zinc-900/50 rounded-[100%] blur-[120px] pointer-events-none" />
-
-      <div className="max-w-5xl mx-auto relative">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
-          <p className="text-xs uppercase tracking-widest text-zinc-500 mb-4 font-medium">
-            Who I Am
-          </p>
-          <h2 className="text-4xl md:text-5xl font-semibold mb-10 tracking-tight text-zinc-100">
-            About Me
+    <section id="about" className="relative z-20 px-5 py-28 md:px-10 md:py-36">
+      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+        <Reveal>
+          <p className="theme-eyebrow mb-5 text-sm font-semibold uppercase">About</p>
+          <h2 className="theme-heading font-heading text-4xl font-semibold leading-tight md:text-6xl">
+            Where classical music meets machine learning.
           </h2>
-        </motion.div>
+        </Reveal>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12"
-        >
-          {/* Left: Bio */}
-          <div>
-            <p className="text-zinc-400 text-lg leading-relaxed mb-6 font-light">
-              I am a final-year Information Technology student at{" "}
-              <span className="text-zinc-200 font-normal">Guru Ghasidas Vishwavidyalaya</span>,
-              deeply focused on Artificial Intelligence and Machine Learning. My academic
-              journey is driven by a desire to apply computational models to complex,
-              multidisciplinary challenges.
+        <div>
+          <Reveal delay={90}>
+            <p className="theme-body max-w-3xl text-lg leading-8 md:text-xl md:leading-9">
+              I&apos;m a final-year IT student at GGV who combines a six-year background in Hindustani classical vocals
+              with deep learning engineering. I built a CNN+BiLSTM pipeline that transcribes tabla audio into
+              DAW-compatible MIDI because I believe the most interesting problems live at the intersection of
+              disciplines. GATE qualified in both Data Analytics and Computer Science. Proficient in PyTorch,
+              LangChain, FastAPI, and RAG architectures.
             </p>
-            <p className="text-zinc-400 text-lg leading-relaxed font-light">
-              GATE-qualified with hands-on experience building{" "}
-              <span className="text-zinc-200 font-normal">LLM-powered applications</span>,
-              end-to-end ML pipelines, and{" "}
-              <span className="text-zinc-200 font-normal">RAG architectures</span> using
-              LangChain, Hugging Face, and vector databases. Proficient in Python, REST
-              APIs (FastAPI), and deploying AI solutions as production-ready systems.
-            </p>
-          </div>
+          </Reveal>
 
-          {/* Right: Quick facts */}
-          <div className="space-y-6">
-            {[
-              { label: "Name", value: "Tanmay Kumar Sahu" },
-              { label: "Degree", value: "B.Tech in Information Technology" },
-              { label: "University", value: "Guru Ghasidas Vishwavidyalaya, Bilaspur" },
-              { label: "CGPA", value: "7.81" },
-              { label: "Focus", value: "AI / ML / Deep Learning / RAG" },
-              { label: "Location", value: "Bilaspur, Chhattisgarh, India" },
-            ].map((item, idx) => (
-              <div key={idx} className="flex gap-4 border-b border-zinc-800/50 pb-4">
-                <span className="text-zinc-500 text-sm uppercase tracking-wider w-28 shrink-0 pt-0.5 font-medium">
-                  {item.label}
-                </span>
-                <span className="text-zinc-300 text-base font-light">{item.value}</span>
-              </div>
+          <div className="theme-grid-frame mt-12 grid gap-px overflow-hidden sm:grid-cols-2">
+            {facts.map(([label, value], index) => (
+              <Reveal key={label} delay={index * 45} className="theme-surface p-5 md:p-6">
+                <p className="theme-muted text-xs font-semibold uppercase">{label}</p>
+                <p className="theme-heading mt-2 text-base font-medium">{value}</p>
+              </Reveal>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
