@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 
 const FRAME_COUNT = 120;
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 const STORY_SECTIONS = [
   {
@@ -40,14 +41,13 @@ type StoryCardProps = {
   index: number;
   progress: MotionValue<number>;
   section: StorySection;
-  segmentSize: number;
 };
 
 function getFramePath(index: number) {
-  return `/sequence/frame_${index.toString().padStart(3, "0")}_delay-0.066s.png`;
+  return `${basePath}/sequence/frame_${index.toString().padStart(3, "0")}_delay-0.066s.png`;
 }
 
-function StoryCard({ index, progress, section, segmentSize }: StoryCardProps) {
+function StoryCard({ index, progress, section }: StoryCardProps) {
   // Hardcoded foolproof bounds for exactly 5 sections to ensure perfect transitions without floating point bugs
   // Increased fade-in and fade-out duration for a much smoother, premium "enhancing" effect
   const bounds = [
@@ -160,7 +160,6 @@ export default function HeroSection() {
   });
 
   const frameIndex = useTransform(scrollYProgress, [0, 1], [0, FRAME_COUNT - 1]);
-  const segmentSize = 1 / STORY_SECTIONS.length;
 
   useEffect(() => {
     const nextImages: HTMLImageElement[] = [];
@@ -275,7 +274,6 @@ export default function HeroSection() {
               index={index}
               progress={scrollYProgress}
               section={section}
-              segmentSize={segmentSize}
             />
           ))}
         </div>

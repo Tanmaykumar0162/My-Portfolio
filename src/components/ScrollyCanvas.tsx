@@ -4,11 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import { useScroll, useTransform } from "framer-motion";
 
 const FRAME_COUNT = 120;
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 function getCurrentFramePath(index: number) {
   // Format index to 3 digits e.g., 000, 001, ..., 119
   const paddedIndex = index.toString().padStart(3, "0");
-  return `/sequence/frame_${paddedIndex}_delay-0.066s.png`;
+  return `${basePath}/sequence/frame_${paddedIndex}_delay-0.066s.png`;
 }
 
 export default function ScrollyCanvas() {
